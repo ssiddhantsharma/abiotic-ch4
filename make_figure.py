@@ -1,4 +1,5 @@
 import math
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
@@ -111,7 +112,8 @@ def main():
     bx.set_xlabel("log$_{10}$ surface CH$_4$ flux (molecules cm$^{-2}$ s$^{-1}$)", fontsize=9)
     bx.tick_params(labelsize=8)
 
-    fig.savefig("figure.png", dpi=300, bbox_inches="tight", facecolor="white")
+    out = Path(__file__).resolve().parent / "note" / "figure.png"
+    fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
 
 
 if __name__ == "__main__":
