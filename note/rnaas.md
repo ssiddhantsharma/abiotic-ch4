@@ -86,12 +86,21 @@ sharp set is replaced by a weighting function p(life | F). What this note adds i
 the magnitude of the quantity that generalisation would need, and the observation
 that on this target it exceeds the spectroscopic term.
 
-An inexpensive intermediate step is available. The posterior on methane flux already
-exists, so reporting the biosignature probability as a function of the assumed
-ceiling, rather than at a single value, would show directly how much of the
-inference rests on geochemistry. Treating the abiotic term as a reported dependence
-rather than a fixed input seems the more useful division of labour as flux based
-biosignature assessment develops.
+An inexpensive intermediate step is available, and it needs nothing that is not
+already published. Reading the quoted credible interval endpoints as the 16th and
+84th percentiles and 11.2 as the median fixes a split normal, which returns 0.76
+for the posterior mass above the adopted ceiling against the 0.77 that Wogan et al.
+tabulate. The same reconstruction puts more than 0.98 of the posterior above the
+maximum of Guzmán-Marmolejo et al. and above any realised estimate, although below
+the quoted interval that is an extrapolation and only the qualitative statement is
+intended. Reporting the biosignature probability as a function of the assumed
+ceiling, rather than at a single value, therefore costs a line of arithmetic on a
+posterior that already exists, and would show directly how much of the inference
+rests on geochemistry. The corresponding Bayes factor cannot be recovered this way,
+since it also requires the prior mass implied by the retrieval at each candidate
+ceiling. Treating the abiotic term as a reported dependence rather than a fixed
+input seems the more useful division of labour as flux based biosignature
+assessment develops.
 
 One limit applies to what is compiled here. The estimates in Figure 1 describe
 different reservoirs that are only partly additive, and several of the seafloor

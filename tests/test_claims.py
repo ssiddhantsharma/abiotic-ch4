@@ -16,6 +16,7 @@ from abiotic_ch4.kt2018 import (
     feo_tmol_per_yr,
     h2_tmol_per_yr,
 )
+from abiotic_ch4.posterior import p_above
 
 DATA = Path(__file__).resolve().parents[1] / "data"
 
@@ -111,3 +112,15 @@ def test_ceiling_choice_moves_the_detectability_floor_800_fold():
 def test_retrieved_flux_clears_both_the_threshold_and_realised_earth():
     assert RETRIEVED_LOG10 > math.log10(THRESHOLD)
     assert RETRIEVED_LOG10 - math.log10(REALIZED_EARTH) == approx(3.53, abs=0.02)
+
+
+def test_reconstructed_posterior_reproduces_their_tabulated_mass():
+    # Wogan et al. Table 2 give P(F in H_CH4 | d) = 0.77 at the adopted ceiling.
+    assert p_above(math.log10(THRESHOLD)) == approx(0.77, abs=0.01)
+
+
+def test_posterior_mass_is_near_unity_at_the_other_published_maximum():
+    # Below the quoted credible interval this is an extrapolation, so only the
+    # qualitative statement is claimed: the posterior lies almost wholly above.
+    assert p_above(math.log10(GM2013_MAX_1ME)) > 0.98
+    assert p_above(math.log10(REALIZED_EARTH)) > 0.99

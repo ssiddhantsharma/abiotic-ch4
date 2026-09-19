@@ -2,7 +2,7 @@
 name = "abiotic-ch4"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = ["pandas", "matplotlib"]
+dependencies = ["pandas", "matplotlib", "scipy"]
 
 [build-system]
 requires = ["hatchling"]

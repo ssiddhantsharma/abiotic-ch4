@@ -39,6 +39,15 @@ rows[["source_key", "setting", "flux_lo"]]
 Fluxes convert from whole-planet molar rates through `convert.tmol_per_yr_to_flux`,
 which takes a radius. An Earth-normalised flux does not transfer to another planet.
 
+## Posterior
+
+`posterior.p_above(log10_ceiling)` reconstructs the marginal methane flux posterior
+of Wogan et al. (2026) from the three quantiles they quote, and returns the mass
+above a candidate ceiling. It reproduces their tabulated 0.77 at the ceiling they
+adopt. The agreement comes from honouring the quoted quantiles rather than from the
+shape assumed, so it is reliable across the quoted interval and an extrapolation
+below it.
+
 ## Tests
 
 `tests/test_claims.py` regenerates every number quoted in the note from published
