@@ -58,6 +58,13 @@ sampled parameters. A failure means the claim is wrong.
 uv run pytest
 ```
 
+## Note
+
+`note/rnaas.tex` with `note/refs.bib`, building with `latexmk -pdf rnaas.tex`.
+Every reference was taken from the reference list of a paper that cites it or from
+the paper itself, not from memory. AASTeX v7.0.1 has no RNAAS class option, so the
+file uses the standard manuscript style.
+
 ## Figure
 
 ```

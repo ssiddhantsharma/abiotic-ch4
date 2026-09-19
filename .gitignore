@@ -3,3 +3,12 @@ __pycache__/
 .pytest_cache/
 .venv/
 .ruff_cache/
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+note/*.log
+note/build.log
