@@ -46,17 +46,23 @@ seafloor estimates, spanning mid-ocean ridges, off-axis vent fields, submarine
 volcanism and subduction related sites, fall between log F = 7.3 and 8.1.
 
 The lower corner of the four parameter ranges sampled by Krissansen-Totton et al.
-is itself modern Earth. Taking their modern crustal production rate, 10 wt% FeO in
-newly produced crust, the 0.25% conversion of FeO to hydrogen that they calibrate
-against observation, and the hydrogen to methane ratio of 12 measured in
-ultramafic hosted vent fluids, their Equation 6 returns 0.012 Tmol yr^-1, or
-log F = 7.67. Their distribution runs from what Earth does to the most generous
-case they were willing to entertain, and the adopted percentile sits 2.90 dex above
-its lower end. That lower corner is itself uncertain upward: Merdith et al. (2020)
-find a present-day hydrogen flux of about 0.7 Tmol yr^-1 from slow and ultraslow
-ridges alone, against the 0.2 Tmol yr^-1 that Krissansen-Totton et al. calibrate to,
-which would raise the realised corner by roughly 0.5 dex. The span between a
-realised and a maximal ceiling is therefore between about 2.4 and 2.9 dex.
+is built entirely from Earth calibrated values. Taking their modern crustal
+production rate, 10 wt% FeO in newly produced crust, the 0.25% conversion of FeO to
+hydrogen that they calibrate against observation, and the hydrogen to methane ratio
+of 12 measured in ultramafic hosted vent fluids, their Equation 6 returns
+0.012 Tmol yr^-1, or log F = 7.67, a little below the directly measured mid-ocean
+ridge values. Their distribution therefore runs from what Earth does to the most
+generous case they were willing to entertain, and the adopted percentile sits
+2.90 dex above its lower end.
+
+Where in that range the ceiling falls is worth locating. Holding crustal production
+at the modern Earth value and setting the other three factors to the generous end of
+their published ranges, Equation 6 reaches log F = 9.87. The adopted ceiling is
+0.70 dex above that, so it is reachable only by invoking crustal production above
+modern Earth's. The factor of ten allowed in their range is an early Earth
+provision, and Krissansen-Totton et al. note that whether such rates are likely for
+terrestrial exoplanets is an open question. Applied to a planet of roughly Earth
+size, that provision is carrying much of the ceiling.
 
 Two consequences follow, both in the units of the original analysis.
 
@@ -73,11 +79,13 @@ retrieval returns a 68% credible interval 1.5 dex wide for the logarithm of the
 methane flux. Table A1 of Wogan et al. gives that width under every combination of
 gas abundances fixed to their true values, and the narrowest entry is 0.1 dex,
 which is the limit of what perfect abundance knowledge would buy on this target.
-Both framings of the ceiling ambiguity, 1.74 dex between two maxima and 2.4 to 2.9
-dex between a maximum and a realised flux, exceed the interval actually achieved.
-A posterior width and a range of candidate thresholds are different objects, but
+All three framings of the ceiling ambiguity, 0.70 dex against what Equation 6 gives
+at modern crustal production, 1.74 dex between two published maxima, and 2.90 dex
+between a maximum and an Earth calibrated flux, are comparable to or larger than the
+interval actually achieved. A posterior width and a range of candidate thresholds
+are different objects, but
 both enter the same decision in the same units, and here the geochemical term is
-the larger of the two.
+the larger.
 
 None of this is concealed in the original work. Wogan et al. state that they adopt
 a single value for simplicity, note that the inhabited and lifeless flux regions
@@ -102,11 +110,14 @@ ceiling. Treating the abiotic term as a reported dependence rather than a fixed
 input seems the more useful division of labour as flux based biosignature
 assessment develops.
 
-One limit applies to what is compiled here. The estimates in Figure 1 describe
+Two limits apply to what is compiled here. The estimates in Figure 1 describe
 different reservoirs that are only partly additive, and several of the seafloor
 values are alternative estimates of one quantity rather than separate contributions
 to it, so the figure should be read as a range of published values and not as a
-distribution. A ceiling for a planet other than Earth would also need its crustal
+distribution. They also differ in what they measure: the mid-ocean ridge values of
+Keir and of Cannat et al. are fluxes released at vents, whereas Merdith et al.
+model production from the iron oxidation state of serpentinite and note that much
+of it is consumed in the subsurface, which is why their values sit higher. A ceiling for a planet other than Earth would also need its crustal
 production rate scaled, as Guzmán-Marmolejo et al. (2013) do for a five Earth mass
 planet.
 

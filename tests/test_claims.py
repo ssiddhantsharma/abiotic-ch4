@@ -10,8 +10,13 @@ from pytest import approx
 from abiotic_ch4.convert import flux_to_tmol_per_yr, tmol_per_yr_to_flux
 from abiotic_ch4.data import earth_modern_realized, load
 from abiotic_ch4.kt2018 import (
+    FR_CH4,
+    FR_FEO,
+    FR_H2,
     MAX_CORNER,
     MODERN_EARTH,
+    P_CRUST,
+    Params,
     ch4_tmol_per_yr,
     feo_tmol_per_yr,
     h2_tmol_per_yr,
@@ -84,11 +89,25 @@ def test_gm2013_tmol_round_trips_from_its_published_flux():
     assert flux_to_tmol_per_yr(GM2013_MAX_1ME) == approx(row.tmol_per_yr_lo, rel=1e-6)
 
 
-def test_merdith_h2_exceeds_the_kt2018b_earth_anchor():
-    # KT2018b calibrate fr_H2 against ~0.2 Tmol/yr. Merdith+2020 find ~0.7 for
-    # slow and ultraslow ridges alone, so the realised corner may sit ~0.5 dex low.
+def test_merdith_models_production_not_the_released_flux_kt2018b_calibrate_to():
+    # KT2018b calibrate fr_H2 against ~0.2 Tmol/yr of H2, from vent-fluid flux
+    # measurements (Keir 2010, Cannat 2010). Merdith+2020 model production from
+    # serpentinite Fe(II)/[Fe(II)+Fe(III)] and find ~0.7, and note that much of it
+    # is consumed in the subsurface. The gap is production minus release, so it
+    # does not raise the realised surface-flux anchor.
     assert h2_tmol_per_yr(MODERN_EARTH) == approx(0.2, rel=0.02)
-    assert math.log10(MERDITH_H2_TMOL / h2_tmol_per_yr(MODERN_EARTH)) == approx(0.55, abs=0.03)
+    assert MERDITH_H2_TMOL > h2_tmol_per_yr(MODERN_EARTH)
+
+
+def test_ceiling_exceeds_what_eq6_gives_at_modern_earth_crustal_production():
+    # With modern Earth crustal production and every other factor at the generous
+    # end of its published range, Eq. 6 reaches log F = 9.87. The adopted ceiling
+    # is 0.70 dex above that, so it is reachable only by invoking crustal
+    # production above modern Earth's.
+    earth_crust_max = Params(P_CRUST[0], FR_FEO[1], FR_H2[1], FR_CH4[1])
+    reachable = math.log10(tmol_per_yr_to_flux(ch4_tmol_per_yr(earth_crust_max)))
+    assert reachable == approx(9.87, abs=0.02)
+    assert math.log10(THRESHOLD) - reachable == approx(0.70, abs=0.02)
 
 
 def test_ceiling_ambiguity_exceeds_the_spectroscopic_uncertainty():
