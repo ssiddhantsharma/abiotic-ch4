@@ -74,3 +74,16 @@ def test_table_a1_flags_what_could_not_be_verified():
     a1 = pd.read_csv(DATA / "wogan2026_tableA1_ci_widths.csv")
     assert set(a1.configuration_verified) == {"yes", "no"}
     assert a1.loc[a1.configuration_verified == "yes", "configuration"].notna().all()
+
+
+def test_figure_shows_every_published_maximum_for_earth():
+    # Guards against the figure quoting one favourably chosen maximum while the
+    # table holds others, which is how the note first overstated the comparison.
+    import make_figure
+
+    d = load()
+    in_data = set(
+        d[(d.kind == "maximal_bound") & (d.body == "earth")
+          & (d.source_key != "kt2018b_threshold")].source_key
+    )
+    assert {k for k, _ in make_figure.MAXIMA} == in_data
