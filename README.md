@@ -7,9 +7,10 @@ Flux-based biosignature work compares a retrieved methane flux against a single
 abiotic ceiling of 3.7e10 molecules cm^-2 s^-1, or 10 Tmol/yr on Earth. That number
 is the 99.7th percentile of the maximum-flux distribution of Krissansen-Totton,
 Olson & Catling (2018), and it now carries more weight than a bound was meant to:
-it sits 1.74 dex above the only other published maximum for the same process, 0.70
-dex above anything its own generating equation yields at modern Earth crustal
-production rates, and a factor of three below Earth's own biological methane flux.
+it is the highest published maximum for this process by more than an order of
+magnitude, sits 0.70 dex above anything its own generating equation yields at modern
+Earth crustal production rates, and lies a factor of three below Earth's own
+biological methane flux.
 This repository collects what has actually been published, so the ceiling can be
 read against it.
 
@@ -78,9 +79,10 @@ cd note && latexmk -pdf rnaas.tex
 
 Every reference in `note/refs.bib` was transcribed from the reference list of a
 paper read in full, or from the cited paper itself. Entries whose DOI could not be
-verified simply have no DOI field. AASTeX v7.0.1 dropped the RNAAS class option, so
-the file uses the standard manuscript style; confirm the current Research Notes
-template with AAS before submitting.
+verified simply have no DOI field. AASTeX v7 has no RNAAS class option, confirmed against the class file in
+AASJournals/AASTeX7; `aastex701.cls` is the official template for all AAS journals
+including Research Notes. The RNAAS limits are editorial: 1500 words, and one figure
+*or* one table but not both, which is why the note carries a figure and no table.
 
 ## License
 
