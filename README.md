@@ -1,9 +1,7 @@
 # abiotic-ch4
 
 Published estimates of Earth's abiotic methane production, in one machine-readable
-table, with the arithmetic of the accompanying note held in place by tests.
-
-Flux-based biosignature work compares a retrieved methane flux against a single
+table. Flux-based biosignature work compares a retrieved methane flux against a single
 abiotic ceiling of 3.7e10 molecules cm^-2 s^-1. This collects what has actually been
 published, so the ceiling can be read against it.
 
