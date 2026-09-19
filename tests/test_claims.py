@@ -7,7 +7,7 @@ from pathlib import Path
 import pandas as pd
 from pytest import approx
 
-from abiotic_ch4.convert import tmol_per_yr_to_flux
+from abiotic_ch4.convert import flux_to_tmol_per_yr, tmol_per_yr_to_flux
 from abiotic_ch4.data import earth_modern_realized, load
 from abiotic_ch4.kt2018 import (
     MAX_CORNER,
@@ -25,6 +25,12 @@ BIOLOGICAL = 1.122e11
 THRESHOLD = 3.7e10
 THRESHOLD_TMOL = 10.0
 RETRIEVED_LOG10 = 11.2
+
+# Guzman-Marmolejo et al. 2013, abstract: "maximum CH4 surface fluxes" for 1 and 5 M_earth.
+GM2013_MAX_1ME = 6.8e8
+
+# Merdith et al. 2020, abstract: present-day H2 from mid-ocean-ridge serpentinization.
+MERDITH_H2_TMOL = 0.7
 
 REALIZED_EARTH = tmol_per_yr_to_flux(ch4_tmol_per_yr(MODERN_EARTH))
 
@@ -61,10 +67,27 @@ def test_threshold_is_three_times_under_earths_biological_flux():
 
 def test_no_published_realised_estimate_reaches_the_threshold():
     rows = earth_modern_realized(load())
-    assert len(rows) == 11
+    assert len(rows) == 12
     highest = rows.flux_hi.max()
     assert highest < THRESHOLD
     assert math.log10(highest) == approx(9.06, abs=0.02)  # Fiebig et al. 2009, continental
+
+
+def test_two_published_maxima_differ_by_1_7_dex():
+    # Both are upper bounds, so the comparison does not depend on reading one as realised.
+    assert math.log10(THRESHOLD / GM2013_MAX_1ME) == approx(1.74, abs=0.02)
+
+
+def test_gm2013_tmol_round_trips_from_its_published_flux():
+    row = load().set_index("source_key").loc["guzman_marmolejo_2013_1me"]
+    assert flux_to_tmol_per_yr(GM2013_MAX_1ME) == approx(row.tmol_per_yr_lo, rel=1e-6)
+
+
+def test_merdith_h2_exceeds_the_kt2018b_earth_anchor():
+    # KT2018b calibrate fr_H2 against ~0.2 Tmol/yr. Merdith+2020 find ~0.7 for
+    # slow and ultraslow ridges alone, so the realised corner may sit ~0.5 dex low.
+    assert h2_tmol_per_yr(MODERN_EARTH) == approx(0.2, rel=0.02)
+    assert math.log10(MERDITH_H2_TMOL / h2_tmol_per_yr(MODERN_EARTH)) == approx(0.55, abs=0.03)
 
 
 def test_ceiling_ambiguity_exceeds_the_spectroscopic_uncertainty():
@@ -73,9 +96,11 @@ def test_ceiling_ambiguity_exceeds_the_spectroscopic_uncertainty():
     best_case = table.ci_width_dex.min()
     assert (as_retrieved, best_case) == (1.5, 0.1)
 
-    ambiguity = math.log10(THRESHOLD / REALIZED_EARTH)
-    assert ambiguity / as_retrieved == approx(1.93, abs=0.05)
-    assert ambiguity / best_case == approx(29, abs=1)
+    # Both framings of the ceiling ambiguity exceed the interval actually achieved.
+    for ambiguity in (math.log10(THRESHOLD / REALIZED_EARTH), math.log10(THRESHOLD / GM2013_MAX_1ME)):
+        assert ambiguity > as_retrieved
+    assert math.log10(THRESHOLD / REALIZED_EARTH) / as_retrieved == approx(1.93, abs=0.05)
+    assert math.log10(THRESHOLD / REALIZED_EARTH) / best_case == approx(29, abs=1)
 
 
 def test_ceiling_choice_moves_the_detectability_floor_800_fold():

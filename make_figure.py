@@ -19,7 +19,11 @@ STYLE = {
     "inventory_derived": ("#009E73", "^", "inventory / residence time"),
 }
 
+GM2013_MAX = 6.8e8  # Guzmán-Marmolejo+ 2013, their stated maximum for 1 M_earth
+
 SHORT = {
+    "merdith_2020_preferred": "Merdith+ 2020",
+    "emmanuel_ague_2007": "Emmanuel & Ague 2007",
     "schindler_kasting_2000": "Schindler & Kasting 2000",
     "cannat_2010": "Cannat+ 2010",
     "keir_2010": "Keir 2010",
@@ -38,8 +42,8 @@ def main():
     rows = earth_modern_realized(load()).sort_values("flux_lo").reset_index(drop=True)
     realized_earth = math.log10(tmol_per_yr_to_flux(ch4_tmol_per_yr(MODERN_EARTH)))
 
-    fig = plt.figure(figsize=(7.4, 5.2))
-    gs = GridSpec(2, 1, height_ratios=[4, 1], hspace=0.32)
+    fig = plt.figure(figsize=(7.6, 5.8))
+    gs = GridSpec(2, 1, height_ratios=[4, 1.4], hspace=0.30)
     ax, bx = fig.add_subplot(gs[0]), fig.add_subplot(gs[1])
 
     for a in (ax, bx):
@@ -55,7 +59,12 @@ def main():
             ha="right", va="center", fontsize=7.5, color="0.2",
         )
 
-    top = len(rows) + 1.0
+    gm = math.log10(GM2013_MAX)
+    ax.plot(gm, len(rows), "D", mfc="white", mec="0.25", mew=1.3, ms=7, zorder=3)
+    ax.text(gm - 0.18, len(rows), "Guzmán-Marmolejo+ 2013 (stated maximum)",
+            ha="right", va="center", fontsize=7.5, color="0.2")
+
+    top = len(rows) + 1.4
     ax.errorbar(
         RETRIEVED, top, xerr=[[RETRIEVED - CI_LO], [CI_HI - RETRIEVED]],
         fmt="o", color="0.15", ms=6, capsize=3, lw=1.4, zorder=3,
@@ -66,7 +75,7 @@ def main():
     # Reference lines stop below the retrieval row so its label does not cross them.
     for x, color, ls in [(math.log10(THRESHOLD), "0.15", "-"),
                          (math.log10(BIOLOGICAL), "0.45", (0, (4, 2)))]:
-        ax.plot([x, x], [-1.3, len(rows) - 0.3], color=color, lw=1.2, ls=ls, zorder=1)
+        ax.plot([x, x], [-1.3, len(rows) + 0.4], color=color, lw=1.2, ls=ls, zorder=1)
     ax.text(math.log10(BIOLOGICAL) + 0.08, -1.1, "modern Earth\nbiological",
             fontsize=7.5, color="0.35", va="bottom")
     ax.text(math.log10(THRESHOLD) - 0.08, -1.1, "adopted abiotic\nceiling",
@@ -85,7 +94,9 @@ def main():
               title="published abiotic estimate", title_fontsize=7.5)
 
     spans = [
-        (realized_earth, math.log10(THRESHOLD), "ceiling ambiguity, 2.90 dex", "#D55E00"),
+        (realized_earth, math.log10(THRESHOLD), "ceiling above realised Earth, 2.90 dex", "#D55E00"),
+        (math.log10(GM2013_MAX), math.log10(THRESHOLD),
+         "ceiling above the other published maximum, 1.74 dex", "#E69F00"),
         (CI_LO, CI_HI, "spectroscopic CI, 1.5 dex", "0.15"),
         (RETRIEVED - BEST_CASE_CI / 2, RETRIEVED + BEST_CASE_CI / 2,
          "best case with perfect abundances, 0.1 dex", "0.45"),
@@ -94,7 +105,7 @@ def main():
         bx.plot([lo, hi], [-y, -y], color=color, lw=3.5, solid_capstyle="butt", zorder=3)
         bx.text(hi + 0.15, -y, label, va="center", fontsize=7.5, color="0.2")
 
-    bx.set_ylim(-2.7, 0.8)
+    bx.set_ylim(-3.7, 0.8)
     bx.set_yticks([])
     bx.spines["left"].set_visible(False)
     bx.set_xlabel("log$_{10}$ surface CH$_4$ flux (molecules cm$^{-2}$ s$^{-1}$)", fontsize=9)
