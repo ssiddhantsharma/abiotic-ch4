@@ -21,11 +21,10 @@
 \begin{abstract}
 Flux based biosignature assessment compares an inferred surface methane flux against
 a ceiling on abiotic production. The ceiling in current use is a deliberately
-conservative upper bound, adopted as a single number. It lies more than an order of
-magnitude above one published maximum for the same process and an order of
-magnitude above another, above
-anything its own generating equation yields at modern Earth crustal production
-rates, and a factor of three below Earth's own biological methane flux. The choice
+conservative upper bound, adopted as a single number. It stands above every other published maximum for the same
+process, by factors of four to fifty-five, above anything its own generating equation
+yields at modern Earth crustal production rates, and a factor of three below Earth's
+own biological methane flux. The choice
 of ceiling therefore fixes the smallest biosphere an observation can reveal, and the
 span of defensible choices is wider than the spectroscopic uncertainty of the
 retrieval it is compared against.
@@ -49,18 +48,17 @@ the work of a likelihood.
 
 \section{Locating the ceiling} \label{sec:locating}
 
-Three comparisons place it.
-
-The first does not depend on reading any number as a realised flux, because it sets
-the ceiling against other published maxima. \citet{guzman2013} modelled methane
+Three comparisons place it, and the first needs no view on what Earth actually
+produces, since it sets the ceiling against other published maxima.
+\citet{guzman2013} modelled methane
 production by serpentinization from the kinetics of the reactions involved, with
 carbon dioxide as the limiting reactant, and report a maximum surface flux of
 $6.8\times10^{8}\ \flux$ for an Earth mass planet, 1.74 dex below the ceiling.
-\citet{merdith2020} give an upper case in which the methane flux approaches the
+\citet{merdith2020} give an upper estimate in which the methane flux approaches the
 hydrogen flux, 1.12 dex below it. Even the Archean maximum of \citet{fiebig2007},
 which describes a more vigorous Earth than the one being modelled, falls 0.60 dex
-short. The adopted ceiling is the highest published maximum for this process by
-more than an order of magnitude.
+short. No published maximum for this process reaches the adopted ceiling, and the
+three fall short of it by factors of four, thirteen and fifty-five.
 
 The second uses the generating equation itself. The lower corner of the four
 parameter ranges sampled by \citet{kt2018} is built entirely from Earth calibrated
@@ -85,8 +83,8 @@ realised abiotic methane production \citep{schindler2000, kasting2005, emmanuel2
 fiebig2007, fiebig2009, cannat2010, keir2010, catling2017, klein2019, portella2019,
 merdith2020}, compiled from the supplementary material of \citet{thompson2022} and
 from \citet{merdith2020}. Every estimate for modern Earth lies below the ceiling,
-the largest, from continental hydrothermal emissions, by 1.5 dex. Six seafloor
-of the nine seafloor estimates, spanning mid-ocean ridges, off-axis vent fields,
+the largest, from continental hydrothermal emissions, by 1.5 dex. Six of the nine
+seafloor estimates, spanning mid-ocean ridges, off-axis vent fields,
 submarine volcanism and subduction related sites, cluster between
 $\log \Fch = 7.3$ and 8.1; the remaining three lie between 8.4 and 8.8.
 
@@ -112,7 +110,7 @@ interval attainable if all gas abundances were known exactly.
 
 \section{What the ceiling costs} \label{sec:cost}
 
-A ceiling implies a minimum detectable biosphere. \citet{wogan2026} adopt
+The first cost is a floor on detectability. \citet{wogan2026} adopt
 $1.122\times10^{11}\ \flux$ for modern Earth's biological methane flux, following
 \citet{catling2017}. The ceiling lies a factor of three below that. A planet whose
 biosphere produced methane at less than a third of Earth's rate could not be called
@@ -120,27 +118,27 @@ inhabited on this criterion at any signal to noise. Placing the ceiling at the E
 calibrated value instead moves that floor to roughly one part in 2400 of Earth's
 biological flux.
 
-The span is also large next to the measurement it is compared against. The retrieval
-returns a 68\% credible interval 1.5 dex wide for $\log \Fch$. Table A1 of
+The second cost is that this choice, rather than the spectrum, sets the scale of the
+uncertainty. The retrieval returns a 68\% credible interval 1.5 dex wide for $\log \Fch$. Table A1 of
 \citet{wogan2026} gives that width under every combination of gas abundances fixed
 to their true values, and the narrowest entry is 0.1 dex, the limit of what perfect
-abundance knowledge would buy on this target. Two of the three framings above, 1.74
-and 2.90 dex, exceed the interval actually achieved, and the third, 0.70 dex, is
-about half of it; all three are several times the 0.1 dex floor. A
-posterior width and a range of candidate thresholds are different objects, but both
-enter the same decision in the same units, and here the geochemical term is the
-larger.
+abundance knowledge would buy on this target. The comparisons in Section~\ref{sec:locating} span 0.60 to
+2.90 dex. The two largest exceed the interval the retrieval actually achieved, the
+rest are a third to three quarters of it, and every one of them is six to thirty
+times the 0.1 dex floor. A posterior width and a range of candidate thresholds are
+different objects, but both enter the same decision in the same units, and on this
+target they are of comparable size.
 
 \section{The dependence can be reported} \label{sec:reportable}
 
 None of this is concealed in the original work. \citet{wogan2026} state that they
 adopt a single value for simplicity, note that the inhabited and lifeless flux
 regions should more realistically overlap, and write down the generalisation in
-which the sharp set is replaced by a weighting function $p(\mathrm{life}\,|\,F)$. What is
-quantified here is the magnitude that generalisation would have to carry.
+which the sharp set is replaced by a weighting function $p(\mathrm{life}\,|\,F)$. What this note supplies is the
+magnitude such a function would have to carry.
 
-An inexpensive intermediate step is available, and it needs nothing that is not
-already published. Reading the quoted credible interval endpoints as the 16th and
+An intermediate step is available, and everything it needs is already published.
+Reading the quoted credible interval endpoints as the 16th and
 84th percentiles and 11.2 as the median fixes a split normal, which returns 0.76 for
 the posterior mass above the adopted ceiling against the 0.77 that \citet{wogan2026}
 tabulate. The same reconstruction puts more than 0.98 of the posterior above the
