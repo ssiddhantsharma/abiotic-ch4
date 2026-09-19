@@ -34,11 +34,6 @@ cd note && latexmk -pdf rnaas.tex
 `posterior.p_above` rebuilds the Wogan et al. flux posterior from their quoted
 quantiles and reproduces their tabulated 0.77 at the ceiling they adopt.
 
-## Note
-
-`note/rnaas.tex`. AASTeX v7 has no RNAAS class option; the limits are editorial,
-1500 words and one figure *or* table but not both.
-
 ## License
 
 MIT
