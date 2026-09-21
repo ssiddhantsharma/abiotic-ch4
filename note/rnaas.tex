@@ -46,6 +46,16 @@ taken as the abiotic alternative and the resulting odds ratio is used as a proxy
 the Bayes factor between life and no life. A bound chosen to be generous then does
 the work of a likelihood.
 
+The construction carries a second consequence. The oxygen biosignature is defined as
+the subset of $\mathcal{H}_{\mathrm{CH_4}}$ with a net positive oxygen flux, and the
+life-consistent region $\mathcal{L}$ as its union with the methane biosignature,
+which is $\mathcal{H}_{\mathrm{CH_4}}$ with the reducing volcanic false positive
+$\mathcal{V}$ removed. The union therefore restores part of $\mathcal{V}$: their
+Table 2 masses give $P(\mathcal{V}\cap\mathcal{B}_{\mathrm{O_2}}) = P(\mathcal{L})
+- P(\mathcal{H}_{\mathrm{CH_4}}) + P(\mathcal{V})$, at least half of $\mathcal{V}$
+in both prior and posterior once two-decimal rounding is propagated. What one branch
+excludes as a false positive, the other partly readmits.
+
 \section{Locating the ceiling} \label{sec:locating}
 
 Three comparisons place it, and the first needs no view on what Earth actually
@@ -171,10 +181,8 @@ for a five Earth mass planet.
 
 The compiled estimates, the arithmetic reproducing every value quoted above, and the
 script that draws Figure~\ref{fig:ladder} are available at
-\url{https://github.com/ssiddhantsharma/abiotic-ch4}. Values from \citet{kt2018} are
-recomputed from their Equation 6 and its four published parameter ranges rather than
-read from their figure, and values from \citet{guzman2013} and \citet{merdith2020}
-are taken from those papers rather than from the compilations that cite them.
+\url{https://github.com/ssiddhantsharma/abiotic-ch4}. Every value is recomputed from the cited
+paper rather than read from a figure or taken from a compilation that cites it.
 
 \bibliographystyle{aasjournalv7}
 \bibliography{refs}

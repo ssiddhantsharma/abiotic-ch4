@@ -1,0 +1,7 @@
+set,definition,description,posterior_given_d,prior,source_locator
+H_CH4,Eq. 1,methane flux exceeding the abiotic serpentinization limit,0.77,0.38,Wogan+2026 Table 2
+V,Eq. 2,reducing volcanic false positive within H_CH4,0.06,0.05,Wogan+2026 Table 2
+B_CH4,Eq. 3,Archean Earth-like methane biosignature (H_CH4 minus V),0.71,0.33,Wogan+2026 Table 2
+B_O2,Eq. 4,modern Earth-like O2 biosignature (subset of H_CH4 with net positive O2 flux),0.44,0.36,Wogan+2026 Table 2
+L,Eq. 5,union of the methane and oxygen biosignature regions,0.76,0.38,Wogan+2026 Table 2
+A,Eq. 6,abiotic flux region (F minus L),0.24,0.62,Wogan+2026 Table 2

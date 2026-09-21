@@ -87,3 +87,16 @@ def test_figure_shows_every_published_maximum_for_earth():
           & (d.source_key != "kt2018b_threshold")].source_key
     )
     assert {k for k, _ in make_figure.MAXIMA} == in_data
+
+
+def test_oxygen_branch_readmits_the_volcanic_false_positive():
+    # B_O2 nests inside H_CH4 (Wogan+2026 Eq. 4, explicit in their LaTeX source) and
+    # B_CH4 = H_CH4 \ V, so P(V and B_O2) = P(L) - P(H_CH4) + P(V). The union L
+    # therefore restores part of the volcanic false-positive region Eq. 3 removes.
+    # Table 2 is quoted to two decimals, so this is reported as a bound.
+    t = pd.read_csv(DATA / "wogan2026_table2_flux_space_masses.csv").set_index("set")
+    for col in ("prior", "posterior_given_d"):
+        m = t[col]
+        overlap_lo = (m["L"] - 0.005) - (m["H_CH4"] + 0.005) + (m["V"] - 0.005)
+        fraction_lo = overlap_lo / (m["V"] + 0.005)
+        assert 0.5 < fraction_lo < 0.7
