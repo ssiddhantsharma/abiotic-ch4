@@ -139,30 +139,22 @@ times the 0.1 dex floor. A posterior width and a range of candidate thresholds a
 different objects, but both enter the same decision in the same units, and on this
 target they are of comparable size.
 
-\section{The dependence can be reported} \label{sec:reportable}
+\section{Reporting the dependence} \label{sec:reportable}
 
-None of this is concealed in the original work. \citet{wogan2026} state that they
-adopt a single value for simplicity, note that the inhabited and lifeless flux
-regions should more realistically overlap, and write down the generalisation in
-which the sharp set is replaced by a weighting function $p(\mathrm{life}\,|\,F)$. What this note supplies is the
-magnitude such a function would have to carry.
+Reading the quoted credible interval endpoints as the 16th and 84th percentiles and
+11.2 as the median fixes a split normal. It returns 0.76 for the posterior mass above
+the adopted ceiling, against the 0.77 that \citet{wogan2026} tabulate. Across the
+ceilings considered here that mass runs from 0.65, with Equation 6 at all four
+factors maximal, through 0.76 at the adopted percentile, to above 0.9 at any
+published maximum. Only the first two fall inside the quoted interval; the others are
+extrapolations and give scale rather than exact values.
 
-An intermediate step is available, and everything it needs is already published.
-Reading the quoted credible interval endpoints as the 16th and
-84th percentiles and 11.2 as the median fixes a split normal, which returns 0.76 for
-the posterior mass above the adopted ceiling against the 0.77 that \citet{wogan2026}
-tabulate. The same reconstruction puts more than 0.98 of the posterior above the
-maximum of \citet{guzman2013} and above any realised estimate, although below the
-quoted interval that is an extrapolation and only the qualitative statement is
-intended. The biosignature probability can therefore be reported as a function of
-the assumed ceiling rather than at a single value, using a posterior that already
-exists. Carried across the ceilings considered here, that mass runs from 0.65 when
-Equation 6 is taken with all four factors maximal, through 0.76 at the adopted
-percentile, to above 0.9 at any of the published maxima. Only the first two lie
-within the quoted credible interval; the rest indicate direction and scale rather
-than exact values. The corresponding Bayes factor cannot be recovered this way,
-since it also requires the prior mass implied by the retrieval at each candidate
-ceiling.
+The biosignature probability can therefore be reported as a function of the assumed
+ceiling, from a posterior that already exists. The Bayes factor cannot: that needs
+the prior mass at each candidate ceiling as well. \citet{wogan2026} point the same
+way, noting that the inhabited and lifeless flux regions should more realistically
+overlap and writing the generalisation in which the sharp set becomes a weighting
+function $p(\mathrm{life}\,|\,F)$.
 
 \section{Limitations} \label{sec:limits}
 
@@ -181,8 +173,7 @@ for a five Earth mass planet.
 
 The compiled estimates, the arithmetic reproducing every value quoted above, and the
 script that draws Figure~\ref{fig:ladder} are available at
-\url{https://github.com/ssiddhantsharma/abiotic-ch4}. Every value is recomputed from the cited
-paper rather than read from a figure or taken from a compilation that cites it.
+\url{https://github.com/ssiddhantsharma/abiotic-ch4}.
 
 \bibliographystyle{aasjournalv7}
 \bibliography{refs}
