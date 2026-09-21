@@ -19,3 +19,6 @@ the distinctions the argument rests on:
 `data/wogan2026_tableA1_ci_widths.csv` — credible-interval widths from Wogan et al.
 (2026), each row flagged for whether its configuration could be verified.
 
+`data/wogan2026_table2_flux_space_masses.csv` — prior and posterior probability mass
+in each flux-space region of Wogan et al. (2026), as quoted to two decimals.
+
