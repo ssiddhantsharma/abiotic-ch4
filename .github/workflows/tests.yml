@@ -1,0 +1,10 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv run --python 3.12 --with pandas --with scipy --with matplotlib --with pytest pytest -q
+      - run: uvx --python 3.12 ruff check .

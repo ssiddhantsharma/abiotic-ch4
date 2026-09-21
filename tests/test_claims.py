@@ -143,3 +143,11 @@ def test_posterior_mass_is_near_unity_at_the_other_published_maximum():
     # qualitative statement is claimed: the posterior lies almost wholly above.
     assert p_above(math.log10(GM2013_MAX_1ME)) > 0.98
     assert p_above(math.log10(REALIZED_EARTH)) > 0.99
+
+
+def test_ceiling_dependence_spans_the_quoted_range():
+    # The curve the note recommends reporting, across every candidate ceiling in
+    # the table. Only values at or above the credible interval are exact.
+    assert p_above(10.87) == approx(0.65, abs=0.02)
+    assert p_above(math.log10(THRESHOLD)) == approx(0.76, abs=0.02)
+    assert p_above(9.97) > 0.9
